@@ -177,5 +177,5 @@ fig.update_layout(
     ]
 )
 
-fig.write_html('first_figure.html', auto_open=True)
+fig.write_html('index.html', auto_open=True)
 
