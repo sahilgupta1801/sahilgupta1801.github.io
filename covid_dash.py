@@ -168,7 +168,7 @@ fig.update_layout(
 
     annotations=[
         dict(
-        	text=" "
+        	text=" ",
             showarrow=False,
             xref="paper",
             yref="paper",
