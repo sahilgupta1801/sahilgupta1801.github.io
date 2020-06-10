@@ -153,7 +153,7 @@ fig.add_trace(
 
 
 fig.update_layout(
-    template="plotly_dark",
+    template="plotly_white",
     title = "Global COVID-19 Cases (Last Updated: " + str(df_final["Last_Update"][0]) + ")",
     showlegend=True,
     legend_orientation="h",
