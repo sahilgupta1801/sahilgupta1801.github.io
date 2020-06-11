@@ -31,7 +31,7 @@ df_total = df_final.groupby("Country_Region", as_index=False).agg(
     }
 )
 
-df_total.head()
+print(df_total.head())
 total_confirmed = df_final["Confirmed"].sum()
 total_recovered = df_final["Recovered"].sum()
 total_deaths = df_final["Deaths"].sum()
