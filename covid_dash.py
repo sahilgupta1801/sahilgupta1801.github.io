@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import pandas as pd
@@ -23,6 +22,7 @@ df_final["Last_Update"]= df_final["Last_Update"]/1000
 df_final["Last_Update"] = df_final["Last_Update"].apply(convertTime)
 
 df_final.head()
+
 df_total = df_final.groupby("Country_Region", as_index=False).agg(
     {
         "Confirmed" : "sum",
@@ -31,10 +31,12 @@ df_total = df_final.groupby("Country_Region", as_index=False).agg(
     }
 )
 
-print(df_total.head())
+df_total.head()
+
 total_confirmed = df_final["Confirmed"].sum()
 total_recovered = df_final["Recovered"].sum()
 total_deaths = df_final["Deaths"].sum()
+
 df_top10 = df_total.nlargest(10, "Confirmed")
 top10_countries_1 = df_top10["Country_Region"].tolist()
 top10_confirmed = df_top10["Confirmed"].tolist()
@@ -46,6 +48,8 @@ top10_recovered = df_top10["Recovered"].tolist()
 df_top10 = df_total.nlargest(10, "Deaths")
 top10_countries_3 = df_top10["Country_Region"].tolist()
 top10_deaths = df_top10["Deaths"].tolist()
+
+
 fig = make_subplots(
     rows = 4, cols = 6,
 
@@ -58,10 +62,11 @@ fig = make_subplots(
 )
 
 
-message = df_final["Country_Region"] +"<br>"
+message = df_final["Country_Region"] + " " + df_final["Province_State"] + "<br>"
 message += "Confirmed: " + df_final["Confirmed"].astype(str) + "<br>"
 message += "Deaths: " + df_final["Deaths"].astype(str) + "<br>"
 message += "Recovered: " + df_final["Recovered"].astype(str) + "<br>"
+message += "Last updated: " + df_final["Last_Update"].astype(str)
 df_final["text"] = message
 
 fig.add_trace(
@@ -125,7 +130,7 @@ fig.add_trace(
         x=top10_countries_1,
         y=top10_confirmed, 
         name= "Confirmed Cases",
-        marker=dict(color="Purple"), 
+        marker=dict(color="Yellow"), 
         showlegend=True,
     ),
     row=2, col=4
@@ -161,7 +166,7 @@ fig.update_layout(
     geo = dict(
             projection_type="orthographic",
             showcoastlines=True,
-            landcolor="green", 
+            landcolor="white", 
             showland= True,
             showocean = True,
             lakecolor="LightBlue"
@@ -169,7 +174,7 @@ fig.update_layout(
 
     annotations=[
         dict(
-        	text=" ",
+            text="Source: https://bit.ly/3aEzxjK",
             showarrow=False,
             xref="paper",
             yref="paper",
@@ -179,4 +184,3 @@ fig.update_layout(
 )
 
 fig.write_html('index.html', auto_open=True)
-
