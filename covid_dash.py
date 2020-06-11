@@ -68,9 +68,9 @@ df_final["text"] = message
 fig.add_trace(
     go.Scattergeo(
         locationmode = "country names",
-        lon = df_final["Long_"],
-        lat = df_final["Lat"],
-        hovertext = df_final["text"],
+        lon = df_total["Long_"],
+        lat = df_total["Lat"],
+        hovertext = df_total["text"],
         showlegend=False,
         marker = dict(
             size = 10,
@@ -83,8 +83,8 @@ fig.add_trace(
                 color='rgba(102, 102, 102)'
             ),
             cmin = 0,
-            color = df_final['Confirmed'],
-            cmax = df_final['Confirmed'].max(),
+            color = df_total['Confirmed'],
+            cmax = d_total['Confirmed'].max(),
             colorbar_title="Confirmed Cases<br>Latest Update",  
             colorbar_x = -0.05
         )
