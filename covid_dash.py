@@ -28,13 +28,10 @@ df_total = df_final.groupby("Country_Region", as_index=False).agg(
         "Confirmed" : "sum",
         "Deaths" : "sum",
         "Recovered" : "sum"
-	"Lat",
-	"Long_",
-	"Last_Update",
     }
 )
 
-print(df_total)
+print(df_total.head())
 total_confirmed = df_final["Confirmed"].sum()
 total_recovered = df_final["Recovered"].sum()
 total_deaths = df_final["Deaths"].sum()
@@ -49,7 +46,6 @@ top10_recovered = df_top10["Recovered"].tolist()
 df_top10 = df_total.nlargest(10, "Deaths")
 top10_countries_3 = df_top10["Country_Region"].tolist()
 top10_deaths = df_top10["Deaths"].tolist()
-#print(df_final['Country_Region'])
 fig = make_subplots(
     rows = 4, cols = 6,
 
@@ -71,9 +67,9 @@ df_final["text"] = message
 fig.add_trace(
     go.Scattergeo(
         locationmode = "country names",
-        lon = df_total["Long_"],
-        lat = df_total["Lat"],
-        hovertext = df_total["text"],
+        lon = df_final["Long_"],
+        lat = df_final["Lat"],
+        hovertext = df_final["text"],
         showlegend=False,
         marker = dict(
             size = 10,
@@ -86,8 +82,8 @@ fig.add_trace(
                 color='rgba(102, 102, 102)'
             ),
             cmin = 0,
-            color = df_total['Confirmed'],
-            cmax = d_total['Confirmed'].max(),
+            color = df_final['Confirmed'],
+            cmax = df_final['Confirmed'].max(),
             colorbar_title="Confirmed Cases<br>Latest Update",  
             colorbar_x = -0.05
         )
