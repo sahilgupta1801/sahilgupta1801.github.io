@@ -46,7 +46,7 @@ top10_recovered = df_top10["Recovered"].tolist()
 df_top10 = df_total.nlargest(10, "Deaths")
 top10_countries_3 = df_top10["Country_Region"].tolist()
 top10_deaths = df_top10["Deaths"].tolist()
-print(df_final['India'])
+print(df_final['Country_Region'])
 fig = make_subplots(
     rows = 4, cols = 6,
 
