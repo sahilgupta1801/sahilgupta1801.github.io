@@ -174,7 +174,7 @@ fig.update_layout(
 
     annotations=[
         dict(
-            text="Source: https://bit.ly/3aEzxjK",
+            text=" ",
             showarrow=False,
             xref="paper",
             yref="paper",
