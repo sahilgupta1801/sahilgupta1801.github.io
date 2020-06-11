@@ -130,7 +130,7 @@ fig.add_trace(
         x=top10_countries_1,
         y=top10_confirmed, 
         name= "Confirmed Cases",
-        marker=dict(color="Yellow"), 
+        marker=dict(color="Purple"), 
         showlegend=True,
     ),
     row=2, col=4
