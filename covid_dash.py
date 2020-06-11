@@ -28,8 +28,8 @@ df_total = df_final.groupby("Country_Region", as_index=False).agg(
         "Confirmed" : "sum",
         "Deaths" : "sum",
         "Recovered" : "sum"
-	"Lat":"mean"
-	"Long_":"mean"
+	"Lat"
+	"Long_"
 	"Last_Update"
     }
 )
